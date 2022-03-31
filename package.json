@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AY1380/ds.git"
+    "url": "git+https://github.com/1380dev/ds.git"
   },
   "keywords": [
     "data",
@@ -21,9 +21,9 @@
   "author": "Kulikov Alex <Alexey1380@icloud.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AY1380/ds/issues"
+    "url": "https://github.com/1380dev/ds/issues"
   },
-  "homepage": "https://github.com/AY1380/ds#readme",
+  "homepage": "https://github.com/1380dev/ds#readme",
   "devDependencies": {
     "@types/jest": "^27.4.1",
     "@typescript-eslint/eslint-plugin": "^5.17.0",
