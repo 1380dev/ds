@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkedList new LinkedList() at(0) must throw an error 1`] = `"Linked list have no item with index 0"`;
+
+exports[`LinkedList new LinkedList() pop must throw an error 1`] = `"Can't use pop! List is empty!"`;
+
+exports[`LinkedList new LinkedList() shift must throw an error 1`] = `"Can't use shift! List is empty!"`;

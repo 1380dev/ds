@@ -1,2 +1,2 @@
 # ds
-Collection of data structures for JavaScript/TypeScript
+Common data structures for JavaScript/TypeScript
