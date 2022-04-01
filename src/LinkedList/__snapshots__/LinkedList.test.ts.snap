@@ -1,7 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`LinkedList new LinkedList() addAfter(2, 1) must throw an error 1`] = `"Element at index 2 not exist! You can not add new value after it!"`;
+
 exports[`LinkedList new LinkedList() at(0) must throw an error 1`] = `"Linked list have no item with index 0"`;
 
 exports[`LinkedList new LinkedList() pop must throw an error 1`] = `"Can't use pop! List is empty!"`;
 
 exports[`LinkedList new LinkedList() shift must throw an error 1`] = `"Can't use shift! List is empty!"`;
+
+exports[`LinkedList new LinkedList([1, 2, 3, 4]) removeAt(-6) must throw an error 1`] = `"Element at index -6 not exist!"`;
+
+exports[`LinkedList new LinkedList([1, 2, 3, 4]) removeAt(6) must throw an error 1`] = `"Element at index 6 not exist!"`;

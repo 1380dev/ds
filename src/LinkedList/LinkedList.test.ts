@@ -8,6 +8,19 @@ describe('LinkedList', () => {
       list = new LinkedList();
     });
 
+    test('addAfter(2, 1) must throw an error', () => {
+      expect(() => list.addAfter(2, 1)).toThrowErrorMatchingSnapshot();
+      expect(list.length).toBe(0);
+    });
+
+    test('addAfter(0, 1) must add 1', () => {
+      list.push(2);
+      list.addAfter(0, 1);
+      expect(list.at(1)).toBe(1);
+      expect(list.fist()).toBe(2);
+      expect(list.length).toBe(2);
+    });
+
     test('ushift() must add 1 at start', () => {
       list.unshift(1);
       expect(list.at(0)).toBe(1);
@@ -50,6 +63,20 @@ describe('LinkedList', () => {
 
     beforeEach(() => {
       list = new LinkedList([1, 2, 3, 4]);
+    });
+
+    test('removeAt(2) must delete third element', () => {
+      list.removeAt(2);
+      expect(list.at(2)).toBe(4);
+      expect(list.length).toBe(3);
+    });
+
+    test('removeAt(6) must throw an error', () => {
+      expect(() => list.removeAt(6)).toThrowErrorMatchingSnapshot();
+    });
+
+    test('removeAt(-6) must throw an error', () => {
+      expect(() => list.removeAt(-6)).toThrowErrorMatchingSnapshot();
     });
 
     test('for of must work', () => {

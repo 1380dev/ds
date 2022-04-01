@@ -47,7 +47,7 @@ export class LinkedList<T> {
       throw Error("Can't use pop! List is empty!");
     }
 
-    const node = this.secondLastNode();
+    const node = this.nodeAt(this.size - 2);
 
     if (node === null) {
       const result = this.head.value;
@@ -92,6 +92,43 @@ export class LinkedList<T> {
     return result;
   }
 
+  addAfter(index: number, value: T): LinkedList<T> {
+    const prevNode = this.nodeAt(index);
+
+    if (prevNode === null) {
+      throw Error(`Element at index ${index} not exist! You can not add new value after it!`);
+    }
+
+    const newNode: Node<T> = {
+      value,
+      next: prevNode.next,
+    };
+
+    this.size++;
+
+    prevNode.next = newNode;
+    return this;
+  }
+
+  removeAt(index: number): LinkedList<T> {
+    const node = this.nodeAt(index - 1);
+
+    if (node === null || node.next === null) {
+      throw Error(`Element at index ${index} not exist!`);
+    }
+
+    const temp = node.next;
+
+    const nextNode = node.next.next;
+
+    node.next = nextNode;
+
+    this.deleteNode(temp);
+    this.size--;
+
+    return this;
+  }
+
   get length(): number {
     return this.size;
   }
@@ -125,11 +162,10 @@ export class LinkedList<T> {
     let node = this.head;
 
     while (node) {
-      const temp: Partial<Node<T>> = node;
+      const temp = node;
       node = node.next;
 
-      delete temp.next;
-      delete temp.value;
+      this.deleteNode(temp);
     }
 
     this.size = 0;
@@ -210,6 +246,11 @@ export class LinkedList<T> {
     return index;
   }
 
+  private deleteNode(node: Partial<Node<T>>): void {
+    delete node.next;
+    delete node.value;
+  }
+
   private addToEnd(item: T): void {
     if (this.tail === null) {
       this.head = {
@@ -245,15 +286,29 @@ export class LinkedList<T> {
     this.size++;
   }
 
-  private secondLastNode(): Node<T> | null {
+  private nodeAt(index: number): Node<T> | null {
+    if (index < 0) {
+      return null;
+    }
+
+    if (index === 0) {
+      return this.head;
+    }
+
     let currentNode = this.head;
+    let i = 1;
 
     if (currentNode === null || currentNode.next === null) {
       return null;
     }
 
-    while (currentNode && currentNode.next !== this.tail) {
+    while (currentNode && currentNode.next && i < index) {
       currentNode = currentNode.next;
+      i++;
+    }
+
+    if (i < index) {
+      return null;
     }
 
     return currentNode;
