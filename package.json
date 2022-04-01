@@ -5,19 +5,17 @@
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "editorconfig": "editorconfig-checker",
     "test": "jest",
-    "doc": "npx typedoc src/index.ts"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "makeDoc": "npx typedoc src/index.ts",
+    "prepare": "husky install",
+    "lint-staged": "lint-staged"
   },
   "lint-staged": {
     "*.(ts)": [
-      "npm run lint:write",
-      "git add"
+      "eslint --fix",
+      "prettier --write .",
+      "editorconfig-checker",
+      "jest"
     ]
   },
   "repository": {
