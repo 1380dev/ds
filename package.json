@@ -8,14 +8,17 @@
     "test": "jest",
     "makeDoc": "npx typedoc src/index.ts",
     "prepare": "husky install",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "eslint": "eslint src",
+    "editorconfig": "editorconfig-checker",
+    "prettier": "prettier --check src"
   },
   "lint-staged": {
     "*.(ts)": [
-      "eslint --fix",
-      "prettier --write .",
-      "editorconfig-checker",
-      "jest"
+      "npm run prettier --write src",
+      "npm run eslint",
+      "npm run editorconfig",
+      "npm test"
     ]
   },
   "repository": {
