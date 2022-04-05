@@ -14,10 +14,13 @@
     "prettier": "prettier --check src"
   },
   "lint-staged": {
+    "*": [
+      "editorconfig-checker"
+    ],
     "*.(ts)": [
-      "npm run prettier --write src",
-      "npm run eslint",
-      "npm run editorconfig",
+      "prettier --write src",
+      "eslint src --fix",
+      "editorconfig-checker",
       "npm test"
     ]
   },
